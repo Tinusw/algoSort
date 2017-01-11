@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -19,12 +20,17 @@ class UsersController < ApplicationController
   end
 
   def show
+    @places = Place.all.sort_by{&:euclidean_distance(User) }
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:id])
+  end
+
   def user_params
-    params.require(:user).permit(:name, :q1, :q2, :q3, :q4, :q5)
+    params.require(:user).permit(:id, :name, :q1, :q2, :q3, :q4, :q5)
   end
 
 end
