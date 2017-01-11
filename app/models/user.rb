@@ -8,8 +8,12 @@ class User < ApplicationRecord
     QUESTIONS.map{|match|self.send(match)}
   end
 
+  def entry_to_array(input)
+    (Array(input)).drop(1)
+  end
+
   def euclidean_distance(other)
-    attribute_pairs = self.match_vector.zip(other.match_vector)
+    attribute_pairs = (entry_to_array(self)).match_vector.zip((entry_to_array(other)).match_vector)
     square_distance = attribute_pairs.reduce(0) do |acc, (a, b)|
       acc + (a-b) **2
     end
