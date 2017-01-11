@@ -35,3 +35,32 @@
             %b
               5)
             = u.q5
+
+  .col-md-4
+    %h1.text-left
+      Place Index Page
+    - @places.each do |u|
+      .row
+        .col-md-6.text-left.panel-primary
+          %h3.panel-heading
+            = u.name
+          %ul
+            %b 
+              1)
+            = u.q1
+          %ul
+            %b
+              2)
+            = u.q2
+          %ul
+            %b
+              3)
+            = u.q3
+          %ul
+            %b
+              4)
+            = u.q4
+          %ul
+            %b
+              5)
+            = u.q5
