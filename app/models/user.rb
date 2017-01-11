@@ -4,20 +4,24 @@ class User < ApplicationRecord
   # p = newly created place
   QUESTIONS =[:q1, :q2, :q3, :q4, :q5]
 
-  def match_vector
-    QUESTIONS.map{|match|self.send(match)}
+  # def match_vector
+  #   QUESTIONS.map{|match|self.send(match)}
+  # end
+
+  # We pluck the question results from our Active Record Entry to create an array that we can then compare in our calculation
+  def entry_to_array
+    [q1, q2, q3, q4, q5]
   end
 
-  def entry_to_array(input)
-    (Array(input)).drop(1)
-  end
-
+  # TODO: doc the method
   def euclidean_distance(other)
-    attribute_pairs = (entry_to_array(self)).match_vector.zip((entry_to_array(other)).match_vector)
-    square_distance = attribute_pairs.reduce(0) do |acc, (a, b)|
-      acc + (a-b) **2
+    distance = 0
+    QUESTIONS.each do |question_name|
+      distance += (self[question_name]-other[question_name])**2
     end
 
-    Math.sqrt square_distance
+    Math.sqrt distance
   end
+
+
 end
