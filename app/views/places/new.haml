@@ -1,0 +1,36 @@
+.col-md-4.col-md-offset-2
+  %h1 
+    Places New
+  = form_for(@place) do |f|
+    .row
+      = f.label :name, "name"
+      = f.text_field :name
+    .br
+    
+    .row
+      %h3
+        = f.label :q1
+        = f.text_field :q1
+
+    .row
+      %h3
+        = f.label :q2
+        = f.text_field :q2
+
+    .row
+      %h3
+        = f.label :q3
+        = f.text_field :q3
+
+    .row
+      %h3
+        = f.label :q4
+        = f.text_field :q4
+
+    .row
+      %h3
+        = f.label :q5
+        = f.text_field :q5
+
+    .row
+      %input{:type => "submit", :value => "DONE"}
