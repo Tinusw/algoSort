@@ -28,6 +28,4 @@ class User < ApplicationRecord
 
     Math.sqrt distance
   end
-
-  
 end
