@@ -13,6 +13,10 @@ class User < ApplicationRecord
     [q1, q2, q3, q4, q5]
   end
 
+  def distance_to_percentage(other)
+    (100-((euclidean_distance(other)*100)/2.2360679)).round
+  end
+
   # TODO: doc the method
   def euclidean_distance(other)
     distance = 0
@@ -23,5 +27,5 @@ class User < ApplicationRecord
     Math.sqrt distance
   end
 
-
+  
 end

@@ -46,6 +46,7 @@
         .col-md-6.text-left.panel-primary
           %h3.panel-heading.label-info
             = p.name
+            = @user.distance_to_percentage(p)
           %ul
             %b 
               1)
