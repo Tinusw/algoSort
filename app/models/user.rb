@@ -15,12 +15,13 @@ class User < ApplicationRecord
   # Now we can do (100 - ((euclidean_distance(user)*100)/maximumValue))
   # We now have a percentage out of a 100 which we can round for fun.
   def distance_to_percentage(other)
-    maximumValue = 2.23606797749979
-    (100 - ((euclidean_distance(other)*100)/maximumValue)).round
+    maximumValue = Math.sqrt QUESTIONS.size
+    # maximumValue = 2.23606797749979
+    (100 - ((euclidean_distance_to_user_to_places(other)*100)/maximumValue)).round
   end
 
   # TODO: doc the method
-  def euclidean_distance(other)
+  def euclidean_distance_to_user_to_places(other)
     distance = 0
     QUESTIONS.each do |question_name|
       distance += (self[question_name]-other[question_name])**2

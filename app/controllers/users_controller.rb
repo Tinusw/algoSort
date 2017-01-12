@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @places = Place.all.sort_by { |place| @user.euclidean_distance(place) }
+    @places = Place.all.sort_by { |place| @user.euclidean_distance_to_user_to_places(place) }
 
   end
 
