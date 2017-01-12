@@ -15,8 +15,7 @@ class User < ApplicationRecord
   # Now we can do (100 - ((euclidean_distance(user)*100)/maximumValue))
   # We now have a percentage out of a 100 which we can round for fun.
   def distance_to_percentage(other)
-    maximumValue = Math.sqrt QUESTIONS.size
-    # maximumValue = 2.23606797749979
+    maximumValue = Math.sqrt entry_to_array.size
     (100 - ((euclidean_distance_to_user_to_places(other)*100)/maximumValue)).round
   end
 
