@@ -38,7 +38,7 @@
           5)
         = @user.q5
 
-  .col-md-3
+  .col-md-4
     %h1
       Places
     - @places.each do |p|
@@ -46,6 +46,7 @@
         .col-md-6.text-left.panel-primary
           %h3.panel-heading.label-info
             = p.name
+          %h4.label-success
             = "#{@user.distance_to_percentage(p)}% Match"
           %ul
             %b 

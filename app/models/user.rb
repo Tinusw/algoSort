@@ -4,17 +4,14 @@ class User < ApplicationRecord
   # p = newly created place
   QUESTIONS =[:q1, :q2, :q3, :q4, :q5]
 
-  # def match_vector
-  #   QUESTIONS.map{|match|self.send(match)}
-  # end
-
   # We pluck the question results from our Active Record Entry to create an array that we can then compare in our calculation
   def entry_to_array
     [q1, q2, q3, q4, q5]
   end
 
   def distance_to_percentage(other)
-    (100-((euclidean_distance(other)*100)/2.2360679)).round
+    maximumValue = 2.23606797749979
+    (100 - ((euclidean_distance(other)*100)/maximumValue)).round
   end
 
   # TODO: doc the method
